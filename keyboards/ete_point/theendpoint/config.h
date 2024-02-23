@@ -11,8 +11,8 @@
 
 // Split parameters
 #define SOFT_SERIAL_PIN         D2
-#define SPLIT_USB_DETECT
-#define SPLIT_USB_TIMEOUT       500
+//#define SPLIT_USB_DETECT
+//#define SPLIT_USB_TIMEOUT       500
 
 // Encoder parameters
 #define ENCODERS_PAD_A { B4 }
