@@ -1,0 +1,44 @@
+name: QMK Firmware Build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    name: QMK Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install QMK CLI and dependencies
+        run: |
+          python3 -m pip install --upgrade pip
+          pip install qmk milc==1.4.0
+
+      - name: Set up QMK environment
+        run: |
+          qmk setup -y
+          qmk config user.keymap=trackball_RF
+
+      - name: Compile firmware
+        run: |
+          export NCPUS=$(nproc || sysctl -n hw.ncpu || getconf _NPROCESSORS_ONLN)
+          qmk compile -kb theendpoint -km trackball_RF -j $NCPUS
+
+      - name: Upload compiled firmware
+        uses: actions/upload-artifact@v4
+        with:
+          name: theendpoint-trackball_RF-firmware
+          path: |
+            *.hex
+            *.bin
