@@ -12,37 +12,41 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout repository (with submodules)
         uses: actions/checkout@v3
+        with:
+          submodules: recursive
 
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.11'
 
-      - name: Install QMK CLI and base dependencies
+      - name: Install system dependencies (AVR GCC etc.)
+        run: |
+          sudo apt update
+          sudo apt install -y gcc-avr binutils-avr avr-libc dfu-programmer dfu-util
+
+      - name: Install QMK CLI and Python deps
         run: |
           python3 -m pip install --upgrade pip
           pip install qmk milc==1.4.0 halo
+          pip install -r requirements.txt
 
-      - name: Configure QMK environment
+      - name: Set up QMK environment
         run: |
           qmk config user.qmk_home=$PWD
           qmk config user.keymap=trackball_RF
-
-      - name: Install QMK firmware Python dependencies
-        run: |
-          pip install -r requirements.txt
 
       - name: Compile firmware
         run: |
           export NCPUS=$(nproc || sysctl -n hw.ncpu || getconf _NPROCESSORS_ONLN)
           qmk compile -kb ete_point/theendpoint -km trackball_RF -j $NCPUS
 
-      - name: Upload compiled firmware
+      - name: Upload firmware
         uses: actions/upload-artifact@v4
         with:
-          name: ete_point-theendpoint-trackball_RF-firmware
+          name: ete_point-theendpoint-trackball_RF
           path: |
             *.hex
             *.bin
