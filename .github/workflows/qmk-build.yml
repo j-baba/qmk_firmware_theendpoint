@@ -20,15 +20,19 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install QMK CLI and dependencies
+      - name: Install QMK CLI and base dependencies
         run: |
           python3 -m pip install --upgrade pip
           pip install qmk milc==1.4.0 halo
 
-      - name: Set up QMK environment
+      - name: Configure QMK environment
         run: |
           qmk config user.qmk_home=$PWD
           qmk config user.keymap=trackball_RF
+
+      - name: Install QMK firmware Python dependencies
+        run: |
+          pip install -r requirements.txt
 
       - name: Compile firmware
         run: |
@@ -38,7 +42,7 @@ jobs:
       - name: Upload compiled firmware
         uses: actions/upload-artifact@v4
         with:
-          name: theendpoint-trackball_RF-firmware
+          name: ete_point-theendpoint-trackball_RF-firmware
           path: |
             *.hex
             *.bin
