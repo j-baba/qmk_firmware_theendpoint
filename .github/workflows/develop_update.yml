@@ -1,4 +1,4 @@
-name: Update develop after master merge
+name: Update develop after main merge
 
 permissions:
   contents: write
@@ -6,7 +6,7 @@ permissions:
 on:
   push:
     branches:
-    - master
+    - main
 
 jobs:
   develop_update:
@@ -26,12 +26,12 @@ jobs:
 
     - name: Checkout develop
       run: |
-        git fetch origin master develop
+        git fetch origin main develop
         git checkout develop
 
-    - name: Update develop from master
+    - name: Update develop from main
       run: |
         git config --global user.name "QMK Bot"
         git config --global user.email "hello@qmk.fm"
-        git merge origin/master
+        git merge origin/main
         git push origin develop

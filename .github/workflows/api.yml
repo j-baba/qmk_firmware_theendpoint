@@ -6,7 +6,7 @@ permissions:
 on:
   push:
     branches:
-    - master
+    - main
     - develop
     paths:
     - 'keyboards/**'
@@ -39,11 +39,11 @@ jobs:
         qmk generate-api
 
     - name: Upload API Data
-      uses: jakejarvis/s3-sync-action@master
+      uses: jakejarvis/s3-sync-action@main
       with:
         args: --acl public-read --follow-symlinks --delete
       env:
-        AWS_S3_BUCKET: ${{ github.ref == 'refs/heads/develop' && secrets['API_SPACE_DEVELOP'] || secrets['API_SPACE_MASTER'] }}
+        AWS_S3_BUCKET: ${{ github.ref == 'refs/heads/develop' && secrets['API_SPACE_DEVELOP'] || secrets['API_SPACE_main'] }}
         AWS_ACCESS_KEY_ID: ${{ secrets.SPACES_ACCESS_KEY }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.SPACES_SECRET_KEY }}
         AWS_S3_ENDPOINT: https://nyc3.digitaloceanspaces.com

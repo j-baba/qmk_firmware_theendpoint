@@ -6,7 +6,7 @@ permissions:
 on:
   push:
     branches:
-    - master
+    - main
     paths:
     - 'tmk_core/**'
     - 'quantum/**'
@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     container: ghcr.io/qmk/qmk_cli
 
-    # protect against those who develop with their fork on master
+    # protect against those who develop with their fork on main
     if: github.repository == 'qmk/qmk_firmware'
 
     steps:
@@ -40,7 +40,7 @@ jobs:
       uses: JamesIves/github-pages-deploy-action@v4.5.0
       with:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        BASE_BRANCH: master
+        BASE_BRANCH: main
         BRANCH: gh-pages
         FOLDER: .build/docs
         GIT_CONFIG_EMAIL: hello@qmk.fm

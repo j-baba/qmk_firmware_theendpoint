@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-    - master
+    - main
     paths:
     - builddefs/**/*
     - drivers/**/*
@@ -23,7 +23,7 @@ jobs:
   tag:
     runs-on: ubuntu-latest
 
-    # protect against those who develop with their fork on master
+    # protect against those who develop with their fork on main
     if: github.repository == 'qmk/qmk_firmware'
 
     steps:
