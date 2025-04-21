@@ -33,11 +33,6 @@ jobs:
           pip install qmk milc==1.4.0 halo
           pip install -r requirements.txt
 
-      - name: Set up QMK environment
-        run: |
-          qmk config user.qmk_home=$PWD
-          qmk config user.keymap=trackball_RF
-
       - name: Compile firmware
         run: |
           export NCPUS=$(nproc || sysctl -n hw.ncpu || getconf _NPROCESSORS_ONLN)
