@@ -27,7 +27,7 @@ jobs:
 
       - name: Set up QMK environment
         run: |
-          qmk setup -y
+          qmk config user.qmk_home=$PWD
           qmk config user.keymap=trackball_RF
 
       - name: Compile firmware
