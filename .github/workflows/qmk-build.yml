@@ -23,7 +23,7 @@ jobs:
       - name: Install QMK CLI and dependencies
         run: |
           python3 -m pip install --upgrade pip
-          pip install qmk milc==1.4.0
+          pip install qmk milc==1.4.0 halo
 
       - name: Set up QMK environment
         run: |
