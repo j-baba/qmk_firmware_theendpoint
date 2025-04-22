@@ -33,12 +33,12 @@ jobs:
           pip install qmk milc==1.4.0 halo
           pip install -r requirements.txt
 
+      - name: Debug path check
+        run: ls -l ../../../../../drivers/pmw3360
+        working-directory: keyboards/ete_point/theendpoint/keymaps/trackball_RF
+
       - name: Compile firmware
         run: |
-          echo pwd
-          pwd
-          echo ls
-          ls
           export NCPUS=$(nproc || sysctl -n hw.ncpu || getconf _NPROCESSORS_ONLN)
           qmk compile -kb ete_point/theendpoint -km trackball_RF -j $NCPUS
 
