@@ -4,8 +4,8 @@
 #pragma once
 
 #define MASTER_RIGHT
-#define USE_SERIAL
-#define SPLIT_USB_DETECT
+//#define USE_SERIAL
+//#define SPLIT_USB_DETECT
 
 //#define SPLIT_POINTING_ENABLE
 //#define POINTING_DEVICE_COMBINED
@@ -14,11 +14,9 @@
 //#define AUTO_MOUSE_DEFAULT_LAYER 3
 //#define AUTO_MOUSE_TIME 500
 
-/*
 #define TAP_CODE_DELAY 5
 #define COMBO_COUNT         8
 #define COMBO_TERM          200
-*/
 
 #define ENCODERS_PAD_A { B4 }
 #define ENCODERS_PAD_B { B5 }

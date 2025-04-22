@@ -91,7 +91,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 // clang-format on
 
-/*
 layer_state_t layer_state_set_user(layer_state_t state) {
     uint8_t layer = get_highest_layer(state);
 
@@ -112,7 +111,6 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
     return state;
 }
-*/
 
 /*
 #ifdef POINTING_DEVICE_AUTO_MOUSE_ENABLE
@@ -131,7 +129,6 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 #endif
 */
 
-/*
 #ifdef COMBO_ENABLE
 
 typedef const uint16_t comb_keys_t[];
@@ -155,7 +152,6 @@ combo_t key_combos[COMBO_COUNT] = {
   COMBO( comb_keys_right, KC_RIGHT ),
 };
 #endif
-*/
 
 bool encoder_update_user(uint8_t index, bool clockwise) {
     keypos_t key;

@@ -16,7 +16,7 @@ ENCODER_ENABLE = yes
 # Disable other features to squeeze firmware size
 SPACE_CADET_ENABLE = no
 MAGIC_ENABLE = no
-CONSOLE_ENABLE = yes
+CONSOLE_ENABLE = no
 COMMAND_ENABLE = no
 MUSIC_ENABLE = no
 SPACE_CADET_ENABLE = no
