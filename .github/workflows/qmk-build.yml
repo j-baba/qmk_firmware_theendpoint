@@ -35,7 +35,10 @@ jobs:
 
       - name: Compile firmware
         run: |
+          echo pwd
           pwd
+          echo ls
+          ls
           export NCPUS=$(nproc || sysctl -n hw.ncpu || getconf _NPROCESSORS_ONLN)
           qmk compile -kb ete_point/theendpoint -km trackball_RF -j $NCPUS
 
