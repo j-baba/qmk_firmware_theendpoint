@@ -14,4 +14,3 @@ SRC += ../lib_unuseoled/ETE/ETE.c
 COMBO_ENABLE = yes
 
 RGBLIGHT_ENABLE = yes
-RGBLIGHT_DRIVER = WS2812
