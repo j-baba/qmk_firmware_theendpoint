@@ -4,6 +4,8 @@
 #pragma once
 
 #define MASTER_RIGHT
+#define USE_SERIAL
+#define SOFT_SERIAL_PIN D2
 
 //#define SPLIT_POINTING_ENABLE
 //#define POINTING_DEVICE_COMBINED
