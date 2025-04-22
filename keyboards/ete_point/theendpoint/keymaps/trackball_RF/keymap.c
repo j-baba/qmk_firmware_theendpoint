@@ -5,7 +5,6 @@
 #include "quantum.h"
 #include <stdio.h>
 
-/*
 enum ETE_keycodes {
     ETE_SAFE_RANGE = SAFE_RANGE,
     REC_RST, // ETE configuration: reset to default
@@ -34,7 +33,6 @@ enum ETE_keycodes {
 #define SCRL_MO QK_KB_7
 #define SCRL_DVI QK_KB_8
 #define SCRL_DVD QK_KB_9
-*/
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
