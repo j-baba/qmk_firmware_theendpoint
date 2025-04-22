@@ -34,7 +34,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: Debug path check
-        run: ls -l 
+        run: ls -l ../
         working-directory: keyboards/ete_point/theendpoint/keymaps/trackball_RF
 
       - name: Compile firmware
