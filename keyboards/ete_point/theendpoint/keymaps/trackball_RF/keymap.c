@@ -5,6 +5,7 @@
 #include "quantum.h"
 #include <stdio.h>
 
+/*
 enum ETE_keycodes {
     ETE_SAFE_RANGE = SAFE_RANGE,
     REC_RST, // ETE configuration: reset to default
@@ -33,7 +34,7 @@ enum ETE_keycodes {
 #define SCRL_MO QK_KB_7
 #define SCRL_DVI QK_KB_8
 #define SCRL_DVD QK_KB_9
-
+*/
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -92,8 +93,30 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 // clang-format on
 
+layer_state_t layer_state_set_user(layer_state_t state) {
+    // Auto enable scroll mode when the highest layer is 3
+    keyball_set_scroll_mode(get_highest_layer(state) == 3);
 
+    uint8_t layer = biton32(state);
+    switch (layer) {
+        case 0:
+            rgblight_sethsv(HSV_OFF);
+            break;
+        case 1:
+            rgblight_sethsv(HSV_GREEN);
+            break;
+        case 2:
+            rgblight_sethsv(HSV_ORANGE);
+            break;
+        case 3:
+            rgblight_sethsv(HSV_RED);
+            break;
+    }
 
+    return state;
+}
+
+/*
 #ifdef POINTING_DEVICE_AUTO_MOUSE_ENABLE
 layer_state_t layer_state_set_user(layer_state_t state) {
     switch(get_highest_layer(remove_auto_mouse_layer(state, true))) {
@@ -107,6 +130,31 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     }
     return state;
 }
+#endif
+*/
+
+#ifdef COMBO_ENABLE
+
+typedef const uint16_t comb_keys_t[];
+static PROGMEM comb_keys_t
+  comb_keys_imeoff = {KC_F, KC_G, COMBO_END},
+  comb_keys_imeon = {KC_H, KC_J, COMBO_END},
+  comb_keys_mbtn1 = {KC_J, KC_K, COMBO_END},
+  comb_keys_mbtn2 = {KC_K, KC_L, COMBO_END},
+  comb_keys_home = {KC_V, KC_B, COMBO_END},
+  comb_keys_end = {KC_N, KC_M, COMBO_END},
+  comb_keys_left = {KC_UP, KC_DOT, COMBO_END},
+  comb_keys_right = {KC_UP, KC_SLASH, COMBO_END};
+combo_t key_combos[COMBO_COUNT] = {
+  COMBO( comb_keys_imeoff, KC_INTERNATIONAL_5 ),
+  COMBO( comb_keys_imeon, KC_INTERNATIONAL_4 ),
+  COMBO( comb_keys_mbtn1, KC_BTN1 ),
+  COMBO( comb_keys_mbtn2, KC_BTN2 ),
+  COMBO( comb_keys_home, KC_HOME ),
+  COMBO( comb_keys_end, KC_END ),
+  COMBO( comb_keys_left, KC_LEFT ),
+  COMBO( comb_keys_right, KC_RIGHT ),
+};
 #endif
 
 bool encoder_update_user(uint8_t index, bool clockwise) {
