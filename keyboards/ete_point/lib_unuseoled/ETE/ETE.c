@@ -54,7 +54,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
 #include "ETE.h"
-#include "drivers/pmw3360/pmw3360.h"
+#include "../../../../drivers/pmw3360/pmw3360.h"
 //#include "pmw3360.h"
 
 const uint8_t CPI_DEFAULT    = ETE_CPI_DEFAULT / 100;
