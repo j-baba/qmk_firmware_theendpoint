@@ -4,9 +4,11 @@ MOUSEKEY_ENABLE = yes
 # Optical sensor driver for trackball.
 POINTING_DEVICE_ENABLE = yes
 POINTING_DEVICE_DRIVER = custom
+SRC += matrix.c
 SRC += drivers/pmw3360/pmw3360.c
-SRC += $(PROJECT_ROOT)/drivers/pmw3360
 QUANTUM_LIB_SRC += spi_master.c # Optical sensor use SPI to communicate
 
 # Include common library
 SRC += ../lib_unuseoled/ETE/ETE.c
+
+EXTRAFLAGS += -I$(PROJECT_ROOT)/drivers/pmw3360
