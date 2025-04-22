@@ -11,4 +11,4 @@ QUANTUM_LIB_SRC += spi_master.c # Optical sensor use SPI to communicate
 # Include common library
 SRC += ../lib_unuseoled/ETE/ETE.c
 
-COMBO_ENABLE = yes
+#COMBO_ENABLE = yes
