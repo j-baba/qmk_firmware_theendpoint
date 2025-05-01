@@ -22,7 +22,7 @@
 // LED parameters
 #define WS2812_DI_PIN D3
 #ifdef RGBLIGHT_ENABLE
- #undef RGBLIGHT_LAYERS
+ #define RGBLIGHT_LAYERS
  #define RGBLED_NUM 20
  #define RGBLED_SPLIT {10, 10}
  #define RGBLIGHT_SPLIT
@@ -32,7 +32,7 @@
 #    define RGBLIGHT_HUE_STEP 8
 #    define RGBLIGHT_SAT_STEP 8
 #    define RGBLIGHT_VAL_STEP 8
-#    define RGBLIGHT_LIMIT_VAL 100
+#    define RGBLIGHT_LIMIT_VAL 80
 #    define RGBLIGHT_SLEEP  /* If defined, the RGB lighting will be switched off when the host goes to sleep */
 /*== all animations enable ==*/
 #    undef RGBLIGHT_ANIMATIONS
