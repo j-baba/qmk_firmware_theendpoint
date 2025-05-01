@@ -94,21 +94,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 layer_state_t layer_state_set_user(layer_state_t state) {
     uint8_t layer = get_highest_layer(state);
 
-    switch (layer) {
-        case 0:
-            rgblight_sethsv(HSV_OFF);
-            break;
-        case 1:
-            rgblight_sethsv(HSV_GREEN);
-            break;
-        case 2:
-            rgblight_sethsv(HSV_ORANGE);
-            break;
-        case 3:
-            rgblight_sethsv(HSV_RED);
-            break;
+    for (uint8_t i = 0; i < RGBLED_NUM; i++) {
+        switch (layer) {
+            case 0:
+                rgblight_sethsv(HSV_OFF);
+                break;
+            case 1:
+                rgblight_sethsv(HSV_GREEN);
+                break;
+            case 2:
+                rgblight_sethsv(HSV_ORANGE);
+                break;
+            case 3:
+                rgblight_sethsv(HSV_RED);
+                break;
+        }
     }
-
+    
     return state;
 }
 
