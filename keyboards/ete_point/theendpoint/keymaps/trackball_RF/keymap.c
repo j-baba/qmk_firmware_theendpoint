@@ -103,7 +103,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
                 rgblight_sethsv(HSV_GREEN);
                 break;
             case 2:
-                rgblight_sethsv(HSV_yellow);
+                rgblight_sethsv(HSV_YELLOW);
                 break;
             case 3:
                 rgblight_sethsv(HSV_RED);
