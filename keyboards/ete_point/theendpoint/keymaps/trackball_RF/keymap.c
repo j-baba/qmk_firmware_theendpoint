@@ -102,7 +102,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
             rgblight_sethsv(HSV_GREEN);
             break;
         case 2:
-            rgblight_sethsv(HSV_ORANGE);
+            rgblight_sethsv(HSV_OFF);
             break;
         case 3:
             rgblight_sethsv(HSV_RED);
@@ -110,11 +110,6 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     }
 
     return state;
-}
-
-bool led_update_user(led_t led_state) {
-    // インジケータ処理を完全無視
-    return true;
 }
 
 /*
