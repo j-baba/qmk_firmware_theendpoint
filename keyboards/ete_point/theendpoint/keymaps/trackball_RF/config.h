@@ -15,7 +15,7 @@
 //#define AUTO_MOUSE_TIME 500
 
 #define TAP_CODE_DELAY 5
-#define COMBO_COUNT         8
+#define COMBO_COUNT         6
 #define COMBO_TERM          200
 
 #define ENCODERS_PAD_A { B4 }
