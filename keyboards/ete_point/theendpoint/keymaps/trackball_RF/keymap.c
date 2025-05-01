@@ -94,25 +94,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 layer_state_t layer_state_set_user(layer_state_t state) {
     uint8_t layer = get_highest_layer(state);
 
-    for (uint8_t i = 0; i < RGBLED_NUM; i++) {
-        if (layer == 2) {
-            // 各インデックスごとに色を分けて確認
-            if (i == 1 || i == 3) {
-                // 問題のLEDは青に塗る（テスト用）
-                rgblight_sethsv_at(170, 255, 100, i);  // 青
-            } else {
-                // 他はオレンジ
-                rgblight_sethsv_at(11, 255, 100, i);   // オレンジ
-            }
-        } else {
-            // それ以外のレイヤー
-            rgblight_sethsv_at(0, 0, 0, i);  // OFF
-        }
+    switch (layer) {
+        case 0:
+            rgblight_sethsv(HSV_OFF);
+            break;
+        case 1:
+            rgblight_sethsv(HSV_GREEN);
+            break;
+        case 2:
+            rgblight_sethsv(HSV_GREEN);
+            break;
+        case 3:
+            rgblight_sethsv(HSV_RED);
+            break;
     }
 
     return state;
 }
-
 
 /*
 #ifdef POINTING_DEVICE_AUTO_MOUSE_ENABLE
