@@ -91,7 +91,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 // clang-format on
 
-/*
 layer_state_t layer_state_set_user(layer_state_t state) {
     uint8_t layer = get_highest_layer(state);
 
@@ -112,37 +111,11 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
     return state;
 }
-*/
 
-// RGBライト用（10個のLED全てを指定色に上書き）
-layer_state_t layer_state_set_user(layer_state_t state) {
-    uint8_t layer = get_highest_layer(state);
-
-    for (uint8_t i = 0; i < RGBLED_NUM; i++) {
-        switch (layer) {
-            case 0:
-                rgblight_sethsv_at(0, 0, 0, i);  // OFF
-                break;
-            case 1:
-                rgblight_sethsv_at(85, 255, 100, i);  // GREEN
-                break;
-            case 2:
-                rgblight_sethsv_at(11, 255, 100, i);  // ORANGE
-                break;
-            case 3:
-                rgblight_sethsv_at(0, 255, 100, i);   // RED
-                break;
-        }
-    }
-
-    return state;
-}
-
-// LEDインジケータ無効化
 bool led_update_user(led_t led_state) {
-    return false;
+    // インジケータ処理を完全無視
+    return true;
 }
-
 
 /*
 #ifdef POINTING_DEVICE_AUTO_MOUSE_ENABLE
